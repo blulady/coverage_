@@ -1,4 +1,6 @@
 version: 1
+orbs:
+  codecov: codecov/codecov@3.2.4
 jobs:
   build:
     docker:
@@ -52,9 +54,18 @@ jobs:
             . venv/bin/activate
             cd api/wwcodesvtools
             python manage.py test -v 2
+            coverage xml
+      - codecov/upload
       - run:
           name: Running Linting Flake8
           command: |
             . venv/bin/activate
             cd api/wwcodesvtools
             python -m flake8
+            
+
+workflows:
+  version: 1
+  build-test:
+    jobs:
+      - build
