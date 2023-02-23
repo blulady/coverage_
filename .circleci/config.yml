@@ -55,6 +55,7 @@ jobs:
             cd api/wwcodesvtools
             python manage.py test -v 2
             coverage xml
+      - codecov/upload
       - run:
           name: Running Linting Flake8
           command: |
@@ -64,7 +65,7 @@ jobs:
             
 
 workflows:
-  upload-to-codecov:
+  version: 2.1
+  build-test:
     jobs:
-      - checkout
-      - codecov/upload
+      - build
