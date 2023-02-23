@@ -1,4 +1,4 @@
-version: 2.1
+version: 1
 orbs:
   codecov: codecov/codecov@3.2.4
 jobs:
@@ -65,7 +65,7 @@ jobs:
             
 
 workflows:
-  version: 2.1
+  version: 1
   build-test:
     jobs:
       - build
